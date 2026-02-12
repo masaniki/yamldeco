@@ -10,7 +10,7 @@ parentDir=Path(__file__).parent
 sys.path.append(str(projectDir))
 print(projectDir)
 
-from src.decoModule import DecoModule
+from unused.decoModule import DecoModule
 
 
 if(__name__=="__main__"):

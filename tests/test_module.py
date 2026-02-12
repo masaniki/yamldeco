@@ -8,9 +8,9 @@ import json
 projectDir=Path(__file__).parent.parent
 parentDir=Path(__file__).parent
 sys.path.append(str(projectDir))
-# print(projectDir)
+print(projectDir)
 
-from src.decoModule import DecoModule
+from src.yamldeco import autoDetect, decorate, simplify
 
 def test_autoDetect():
     """
@@ -25,7 +25,7 @@ def test_autoDetect():
         unitFile=inputDir/key
         with open(unitFile,mode="r",encoding="utf-8") as f:
             inputDict=yaml.safe_load(f)
-        realValue=DecoModule.autoDetect(inputDict)
+        realValue=autoDetect(inputDict)
         assert realValue==expVlaue
 
 def test_decorate(outName:str="out",isTest:bool=True,expName:str="exp"):
@@ -49,7 +49,7 @@ def test_decorate(outName:str="out",isTest:bool=True,expName:str="exp"):
     for inExampleFile in inDir.iterdir():
         with open(inExampleFile,mode="r",encoding="utf-8") as f:
             inputDict=yaml.safe_load(f)
-        outDict=DecoModule.decorate(inputDict)
+        outDict=decorate(inputDict)
         outExampleFile=outDir/inExampleFile.name
         with open(outExampleFile,mode="w",encoding="utf-8") as f:
             yaml.safe_dump(outDict,f)
@@ -82,7 +82,7 @@ def test_simplify(outName:str="out",isTest:bool=True,expName:str="exp"):
     for inCaseFile in inDir.iterdir():
         with open(inCaseFile,mode="r",encoding="utf-8") as f:
             inCaseDict=yaml.safe_load(f)
-        outCaseDict=DecoModule.simplify(inCaseDict)
+        outCaseDict=simplify(inCaseDict)
         outCaseFile=outDir/inCaseFile.name
         with open(outCaseFile,mode="w",encoding="utf-8") as f:
             yaml.safe_dump(outCaseDict,f)

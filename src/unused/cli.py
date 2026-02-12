@@ -4,9 +4,7 @@ import argparse
 import yaml
 import json
 
-from decoModule import DecoModule
-
-VERSION="v0.1.2"
+from unused.decoModule import DecoModule
 
 def main():
     """
@@ -14,7 +12,7 @@ def main():
     "@Desc": 引数は標準入力から渡される。
     """
     parser=argparse.ArgumentParser(prog="yamldeco")
-    parser.add_argument("-v","--version", action="version", version="%(prog)s "+f"{VERSION}")
+    parser.add_argument("-v","--version", action="version", version="%(prog)s "+f"{DecoModule.VERSION}")
     parser.add_argument("origin", type=str, default=None, help="Put in original file name. It should be YAML or JSON.")
     parser.add_argument("outcome", type=str, default=None, help="Put in output file name. This file is written in YAML or JSON.")
     parser.add_argument("-i","--input", default="auto", choices=["yaml","json","auto"], help="Specify input foramt. 'yaml', 'json' and 'auto' is available.")
