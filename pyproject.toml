@@ -35,7 +35,6 @@ keywords = [
 yamldeco = "cli:main"
 
 [project.urls]
-Homepage = <{@Summ: projectのhomepage, @Type: URL, @Feat: 主に個人のhomepage}>
-Repository = <{@Summ: source codeの公開場所, @Type: URL, @Feat: 主にgithub}>
-Documentation = <{@Summ: documetの場所, @Type: URL, @Feat: 主にgithub}>
-Issues = <{@Summ: 問題点を指摘する場所, @Type: URL, @Feat: 主にgithub}>
+Repository = "https://github.com/masaniki/yamldeco"
+Documentation = "https://github.com/masaniki/yamldeco/tree/master/docs"
+Issues = "https://github.com/masaniki/yamldeco/issues"

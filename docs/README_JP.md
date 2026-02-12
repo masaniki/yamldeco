@@ -4,13 +4,7 @@
 
 # インストール方法
 
-`pip install <package_name>`
-
-## パッケージ依存性
-
-以下のpackageをインストールしないと正しく機能しない場合があります。
-
-- [PyYAML](https://pypi.org/project/PyYAML/): 最も人気なPyhton用のYAMLパーサーです。
+`pip install yamldeco`
 
 # 使い方
 
