@@ -22,4 +22,24 @@ PyPIへのupload
 
 testの仕方を記述する。
 
+## Branchs
 
+branch戦略を記述する。
+
+### `master`
+
+現在公開中のbranch。
+
+### `develop`
+
+破壊的commitが禁止されているbranch。
+
+masterへmergeする。
+
+### `feat/*`
+
+破壊的commitができるbranch。
+
+developへmergeする。
+
+merge後は削除。
