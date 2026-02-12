@@ -1,6 +1,6 @@
 # 自己紹介
 
-YAMLもしくはJSONに説明文を付けるためのライブラリです。
+YAMLやJSONに説明文を付けるためのライブラリです。
 
 # インストール方法
 
@@ -12,91 +12,36 @@ YAMLもしくはJSONに説明文を付けるためのライブラリです。
 
 # 詳細
 
-YAMLやJSONに説明文を加えるためのlibrary。
-
 形式層と装飾層を交互に入れ子にする。
 
 装飾層は"@"から始まるdict型。
 
 "@Children"で装飾層から形式層へ移行する。
 
-"@Plh"でplaceholderを表す。\<yamldeco\>から\<yaml\>への変換にはplaceholderの指定が必須。
-
 JSONにも対応する。拡張子".json"の時はJSONとして処理する。その他の拡張子は全てYAMLとして処理する。
 
+simple YAML ----decorate---> decoration YAML
 
-## YAMLDECO CLI
+simple YAML <---simplify---- decoration YAML
 
-`yamldeco (-v|--version)`:
+## Details
 
-- yamldecoのversion情報を出力する。
+`yamldeco [-h] [-v] [-i {yaml,json,auto}] [-o {yaml,json,auto}] [-m {d,s,a,decorate,simplify,auto}] origin outcome`
 
-`yamldeco (-h|--help)`:
+位置引数:
+| 変数名  | 説明 |
+| ---     | --- |
+| origin  | 変更前のfile名を指定する。YAMLかJSON。 |
+| outcome | 出力するfile名を指定する。YAMLかJSON。 |
 
-- yamldecoのcommandの使い方を出力する。
-
-`yamldeco <input> <output>`
-
-- もっとも簡単な使い方。
-
-- 厳密には`yamldeco <input> <output> --in auto --out auto --method auto`の糖衣構文である。
-
-
-`yamldeco <input> <output> [(-i|--in) (yaml|json|auto)]`
-
-- defaultは`auto`.
-
-- `-i yaml`
-
-  \<input\>をYAMLとして解釈する。
-
-- `-i json`
-
-  \<input\>をJSONとして解釈する。
-
-- `-i auto`
-
-  \<input\>の拡張子が".json"ならばJSONとして解釈する。
-
-  その他の拡張子の場合はYAMLとして解釈する。
-
-`yamldeco <input> <output> [(-o|--out) (yaml|json|auto)]`
-
-- defaultは`auto`.
-
-- `-o yaml`
-
-  \<output\>をYAMLとして解釈する。
-
-- `-o json`
-
-  \<output\>をJSONとして解釈する。
-
-- `-o auto`
-
-  \<output\>の拡張子が".json"ならばJSONとして解釈する。
-
-  その他の拡張子の場合はYAMLとして解釈する。
-
-
-`yamldeco <input> <output> [(-m|--method) (d|decorate|s|simplify|a|auto)]`
-
-- defaultは`auto`。
-
-- `-m (d|decorate)`
-
-  \<input\>をsimple YAMLで解釈して、\<output\>にdecoration YAMLを返す。
-
-- `-m (s|simplify)`
-
-  \<input\>をdecotation YAMLで解釈して、\<output\>にsimple YAMLを返す。
-
-- `-m (a|auto)`
-
-  \<input\>が接頭辞`@`を含む場合、`-m simplify`と同様に振る舞う。
-
-  逆に接頭辞`@`を含まない場合は、`-m decorate`と同様に振る舞う。
-
+オプション引数:
+| 変数名        | 初期値 | 説明　|
+| ---           | --- | --- |
+| [-h\|--help]  | --- | help messageを表示する。 |
+| [-v\|--version] | --- | version messageを表示する。 |
+| [-i\|--input] {yaml,json,auto} | auto | \<origin\>のfile形式を指定する。autoの時は拡張子に基づいて判断。 |
+| [-o\|--output] {yaml,json,auto} | auto | \<outcome\>のfile形式を指定する。autoの時は拡張子に基づいて判断。 |
+| [-m\|--method] {d,s,a,decorate,simplify,auto} | auto | decorateかsimplifyかを指定する。autoの時は\<origin\>の中に接頭辞`@`があるか否かで判断。 |
 
 ## Next To Do
 
@@ -107,6 +52,8 @@ JSONにも対応する。拡張子".json"の時はJSONとして処理する。�
 - fileだけでなく、directoryも引数にできるようにする。
 - そうすると、file名のfilterが必要になる。
 - file名のfilterをどうするか？
+
+"@Plh"でplaceholderを表す。\<yamldeco\>から\<yaml\>への変換にはplaceholderの指定が必須。
 
 # Others
 
