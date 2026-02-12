@@ -4,22 +4,35 @@ requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = <{@Summ: pypi上でのproject名, @Type: String}>
+name = "yamldeco
 version = "0.1.0"
 authors = [
   { name="masaniki", email="masaniki.software@gmail.com" },
 ]
-description = <{@Summ: projectの詳細を記述する。, @Desc: homepageではpip installの下に記述される, @Type: String}>
-dependencies = <{@Summ: packageの依存性を記述する, @Type: pypi上のproject名(str型)のList}>
+description = "This is a library for adding descriptions to YAML."
+dependencies = ["PyYAML"]
 readme = "README.md"
 requires-python = ">=3.9"
-classifiers = <{@Summ:PyPIが定める分類名, @Type:Enum型List, @Disc:"https://pypi.org/classifiers/"}>
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Natural Language :: English",
+  "Natural Language :: Japanese",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.9",
+  "Topic :: Documentation",
+]
 license = "MIT"
 license-files = ["LICENSE.txt"]
-keywords = <{@Summ: PyPI上の検索に引っかかるためのkeyword., @Desc:homepageのmetadataの所に記載される。, @Type: String型Lsit}>
+keywords = [
+  "YAML",
+  "CLI",
+  "documentation"
+]
 
 [project.scripts]
-<{@Summ: cli applicationのcommand名, @Type:String}> = "<srcからの相対path>:<cliによって実行する関数名>"
+yamldeco = "cli:main"
 
 [project.urls]
 Homepage = <{@Summ: projectのhomepage, @Type: URL, @Feat: 主に個人のhomepage}>
