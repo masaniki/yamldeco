@@ -1,0 +1,10 @@
+'@Children':
+  updates:
+    '@Children':
+    - '@Children':
+        directory: /
+        package-ecosystem: npm
+        schedule:
+          '@Children':
+            interval: daily
+  version: 2

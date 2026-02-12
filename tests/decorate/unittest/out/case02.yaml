@@ -1,0 +1,22 @@
+'@Children':
+  sample:
+    '@Children':
+    - '@Children':
+        parent01:
+          '@Children':
+          - '@Children':
+              child01_01:
+                '@Children':
+                - grandchild01.txt
+          - '@Children':
+              child01_02:
+                '@Children':
+                - grandchild02.txt
+          - child01_03.txt
+    - '@Children':
+        parent02:
+          '@Children':
+          - '@Children':
+              child02_01:
+                '@Children':
+                - grandchild02_01.txt
