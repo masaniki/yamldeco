@@ -24,7 +24,7 @@ simple YAML ----decorate---> decoration YAML
 
 simple YAML <---simplify---- decoration YAML
 
-## Details
+## 詳細
 
 `yamldeco [-h] [-v] [-i {yaml,json,auto}] [-o {yaml,json,auto}] [-m {d,s,a,decorate,simplify,auto}] origin outcome`
 
