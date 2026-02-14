@@ -178,7 +178,7 @@ def main():
         case _:
             raise ValueError(f"{args.input} is invalid.")
     # 出力処理
-    with open(outcomePath,mode="r",encoding="utf-8") as f:
+    with open(outcomePath,mode="w",encoding="utf-8") as f:
         if(isYaml):
             yaml.safe_dump(outDict,f)
         else:
