@@ -9,7 +9,7 @@ import argparse
 import yaml
 import json
 
-VERSION="v0.1.3"
+VERSION="v0.1.4"
 
 def autoDetect(obj):
     """
