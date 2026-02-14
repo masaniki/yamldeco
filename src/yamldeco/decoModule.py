@@ -114,6 +114,37 @@ def decorate(obj):
     else:
         return obj
 
+def determineExt(inputMode,ext):
+    """
+    @Summ: 拡張子を決定する関数。
+
+    @Args:
+      inputMode:
+        @Summ: "yamldeco --inputの引数が入る。"
+        @Type: Str
+      ext:
+        @Summ: 解析する拡張子名。
+        @Desc: ".も含む。"
+    @Returns:
+      @Summ: YAMLの時True, JSONの時False.
+      @Type: Bool
+    """
+    match inputMode:
+        case "yaml":
+            isYaml=True  # yamlの時にTrue,jsonの時にFalse
+        case "json":
+            isYaml=False
+        case "auto":
+            if(ext==".json"):
+                isYaml=False
+            elif(ext==".yaml" or ext==".yml"):
+                isYaml=True
+            else:
+                raise ValueError(f"{ext} is invalid extension.:  ['.json', '.yml', .'.yaml'] is valid.")
+        case _:
+            raise ValueError(f"{inputMode} is invalid.")
+    return isYaml
+
 
 def main():
     """
@@ -128,25 +159,12 @@ def main():
     parser.add_argument("-o","--output", default="auto", choices=["yaml","json","auto"], help="Specify output format. 'yaml', 'json' and 'auto' is available.")
     parser.add_argument("-m","--method", default="auto", choices=["d","s","a","decorate","simplify","auto"], help="Specify the transform rule.")
     args=parser.parse_args()
-    print(args)
     originPath=Path(args.origin)
     outcomePath=Path(args.outcome)
-    # 入力形式の決定。
-    match args.input:
-        case "yaml":
-            isYaml=True  # yamlの時にTrue,jsonの時にFalse
-        case "json":
-            isYaml=False
-        case "auto":
-            if(originPath.suffix==".json"):
-                isYaml=False
-            else:
-                isYaml=True
-        case _:
-            raise ValueError(f"{args.input} is invalid.")
     # 入力処理
+    inputIsYaml=determineExt(args.input,originPath.suffix)
     with open(originPath,mode="r",encoding="utf-8") as f:
-        if(isYaml):
+        if(inputIsYaml):
             inputDict=yaml.safe_load(f)
         else:
             inputDict=json.load(f)
@@ -161,26 +179,16 @@ def main():
         raise ValueError(f"{args.method} is invalid.")
     # methodの実行。
     if(isDecorate):
-        outDict=decorate(inputDict)
-    else:
         outDict=simplify(inputDict)
-    # 出力形式の決定。
-    match args.output:
-        case "yaml":
-            isYaml=True  # yamlの時にTrue,jsonの時にFalse
-        case "json":
-            isYaml=False
-        case "auto":
-            if(outcomePath.suffix==".json"):
-                isYaml=False
-            else:
-                isYaml=True
-        case _:
-            raise ValueError(f"{args.input} is invalid.")
+    else:
+        outDict=decorate(inputDict)
     # 出力処理
+    outputIsYaml=determineExt(args.output,outcomePath.suffix)
     with open(outcomePath,mode="w",encoding="utf-8") as f:
-        if(isYaml):
+        if(outputIsYaml):
             yaml.safe_dump(outDict,f)
         else:
             json.dump(outDict,f)
 
+if(__name__=="__main__"):
+    main()

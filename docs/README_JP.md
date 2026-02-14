@@ -52,8 +52,8 @@ simple YAML <---simplify---- decoration YAML
 - fileだけでなく、directoryも引数にできるようにする。
 - そうすると、file名のfilterが必要になる。
 - file名のfilterをどうするか？
-
-"@Plh"でplaceholderを表す。\<yamldeco\>から\<yaml\>への変換にはplaceholderの指定が必須。
+- valueがcontainer型の時は"@Children"で格納して、valueがscalar型の時は"@Plh"へ格納する。
+- "@Plh"でplaceholderを表す。\<yamldeco\>から\<yaml\>への変換にはplaceholderの指定が必須。
 
 # Others
 
