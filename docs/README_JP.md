@@ -55,6 +55,10 @@ simple YAML <---simplify---- decoration YAML
 - valueがcontainer型の時は"@Children"で格納して、valueがscalar型の時は"@Plh"へ格納する。
 - "@Plh"でplaceholderを表す。\<yamldeco\>から\<yaml\>への変換にはplaceholderの指定が必須。
 
+## メモ
+
+- file構造を記述するには、結局yamlの仕様が足枷になっている。string treeという新しい規格が必要である。
+
 # Others
 
 ## /docs
