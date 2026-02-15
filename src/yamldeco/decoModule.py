@@ -186,7 +186,7 @@ def main():
     outputIsYaml=determineExt(args.output,outcomePath.suffix)
     with open(outcomePath,mode="w",encoding="utf-8") as f:
         if(outputIsYaml):
-            yaml.safe_dump(outDict,f)
+            yaml.safe_dump(outDict,f,allow_unicode=True)
         else:
             json.dump(outDict,f)
 
