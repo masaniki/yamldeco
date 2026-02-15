@@ -6,6 +6,8 @@
 
 ### build
 
+version情報は`src/yamldeco/decoModule.py`と`pyproject.toml`にあるので、その2か所を更新する。
+
 `Python -m build .`
 
 ### upload
